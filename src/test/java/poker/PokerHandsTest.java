@@ -164,4 +164,15 @@ public class PokerHandsTest {
         String result = pokerHandsPlayer1.beats(pokerHandsPlayer2);
         assertEquals("Player1 Win", result);
     }
+
+    @Test
+    public void givenSamePoker_whenPlayer2HasFlush_thenPlayer1Dogfall() {
+        String[] player1 = {"2D", "3C", "TS", "JS", "AH"};
+        String[] player2 = {"2C", "3H", "TC", "JD", "AC"};
+        PokerHands pokerHandsPlayer1 = new PokerHands(player1);
+        PokerHands pokerHandsPlayer2 = new PokerHands(player2);
+
+        String result = pokerHandsPlayer1.beats(pokerHandsPlayer2);
+        assertEquals("A Dead Heat", result);
+    }
 }

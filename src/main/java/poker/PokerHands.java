@@ -140,11 +140,11 @@ public class PokerHands {
                 case 3:
                     return thisBeatsP2InTieThreeOfAKind(p2);
                 case 6:
-                    return thisBeatsP2InTieThreeOfAKind(p2);    //the three of a kind method works for a full house as well
+                    return thisBeatsP2InTieThreeOfAKind(p2);
                 case 7:
                     return thisBeatsP2InTieFourOfAKind(p2);
                 default:
-                    return thisBeatsP2InTieHighCard(p2);        //works for high card, straight, flush, straight flush (rank 0, 4, 5, 8)
+                    return thisBeatsP2InTieHighCard(p2);
             }
         }
     }
@@ -157,7 +157,7 @@ public class PokerHands {
                 return "Player2 Win";
         }
         //should never happen
-        return "Player2 Win";
+        return "A Dead Heat";
     }
 
     private String thisBeatsP2InTiePair(PokerHands p2) {
@@ -177,10 +177,10 @@ public class PokerHands {
         else if (p1PairValue < p2PairValue)
             return "Player2 Win";
         else {
-            //delete the cards that created the pair from the cardsValues array, so not to the count them when finding the high card
+
             deleteCardValue(p1PairValue);
             deleteCardValue(p2PairValue);
-            //find winner by high card
+
             return thisBeatsP2InTieHighCard(p2);
         }
     }
